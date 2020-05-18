@@ -4,5 +4,5 @@ CREATE TABLE patients (
     disease VARCHAR(255) NOT NULL
 );
 
-INSERT INTO books (author, title)
+INSERT INTO patients (name, disease)
 VALUES  ('Fulano', 'Corona virus');
