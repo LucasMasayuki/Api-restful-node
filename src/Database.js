@@ -2,29 +2,23 @@ import {
     Pool
 } from 'pg'
 
-import {
-    db_password,
-    db_host,
-    db_database,
-    db_user,
-    db_port,
-} from './Config'
-
+let instance = null
 export default class Database {
     constructor(...args) {
         this.pool = new Pool({
-            user: db_user,
-            host: db_host,
-            database: db_database,
-            password: db_password,
-            port: db_port,
+            user: process.env.DB_USER,
+            host: process.env.DB_HOST,
+            database: process.env.DB_DATABASE,
+            password: process.env.DB_PASSWORD,
+            port: process.env.DB_PORT,
         })
     }
 
-    static shared() {
-        if (this.selfReference === undefined) {
-            this.selfReference = new Database
+    static get instance() {
+        if (instance === null) {
+            instance = new Database()
         }
-        return this.selfReference
+
+        return instance
     }
 }
