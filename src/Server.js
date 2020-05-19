@@ -2,6 +2,8 @@ import express from 'express'
 import bodyParser from 'body-parser'
 import cors from 'cors'
 import Patients from './tables/Patients'
+import dotenv from "dotenv"
+dotenv.config()
 
 export default class Server {
     static initialize() {
@@ -24,9 +26,9 @@ export default class Server {
 
         app.get('/patients', Patients.getAll)
         app.get('/patients/:id', Patients.getById)
-        app.put('/patients/:id', Patients.update)
         app.post('/patients', Patients.create)
-        app.delete('/patients', Patients.deleteById)
+        app.put('/patients/:id', Patients.update)
+        app.delete('/patients/:id', Patients.deleteById)
 
         app.listen(port, () => console.log('server started'))
     }
