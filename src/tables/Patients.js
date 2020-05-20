@@ -25,7 +25,10 @@ const getById = (request, response) => {
                 response.status(500).json(error)
                 return
             }
-            response.status(200).json(results.rows)
+            response.status(200).json({
+                status: 'success',
+                message: results.rows
+            })
         }
     )
 }
@@ -46,7 +49,10 @@ const create = (request, response) => {
                 response.status(500).json(error)
                 return
             }
-            response.status(201).json(`Patients added with ID: ${results.insertId}`)
+            response.status(201).json({
+                status: 'success',
+                message: 'Patient added.'
+            })
         }
     )
 }
@@ -68,7 +74,10 @@ const update = (request, response) => {
                 response.status(500).json(error)
                 return
             }
-            response.status(200).json(`Patients modified with ID: ${id}`)
+            response.status(200).json({
+                status: 'success',
+                message: 'Patient updated.'
+            })
         }
     )
 }
@@ -82,7 +91,10 @@ const deleteById = (request, response) => {
             response.status(500).json(error)
             return
         }
-        response.status(200).json(`Patients deleted with ID: ${id}`)
+        response.status(200).json({
+            status: 'success',
+            message: 'Patient deleted.'
+        })
     })
 }
 

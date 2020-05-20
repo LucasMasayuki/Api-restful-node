@@ -47,12 +47,13 @@ export default class Prompt {
 
         switch (whatWantToDo) {
             case 'get_all':
+                console.log('\n')
                 await TestApi.testGetAllPatients()
                 break
 
             case 'get_one':
                 id = await this.questionAboutPatientId()
-                console.log(id)
+                console.log('\n')
 
                 await TestApi.testGetPatient(id)
 
@@ -61,6 +62,7 @@ export default class Prompt {
             case 'create':
                 name = await this.questionAboutPatientName()
                 disease = await this.questionAboutPatientDisease()
+                console.log('\n')
 
                 let dataToCreate = {
                     name: name,
@@ -75,6 +77,7 @@ export default class Prompt {
                 id = await this.questionAboutPatientId()
                 name = await this.questionAboutPatientName()
                 disease = await this.questionAboutPatientDisease()
+                console.log('\n')
 
                 let dataToUpate = {
                     name: name,
@@ -86,6 +89,7 @@ export default class Prompt {
 
             case 'delete':
                 id = await this.questionAboutPatientId()
+                console.log('\n')
                 await TestApi.testDeletePatient(id)
                 break
 
@@ -133,7 +137,7 @@ export default class Prompt {
         let isNotString = typeof name !== 'string'
 
         while (isNotString) {
-            let name = await this.promiseAnswerQuestion("Please tell me the name of patient: ")
+            name = await this.promiseAnswerQuestion("Please tell me the name of patient: ")
 
             isNotString = typeof name !== 'string'
             if (isNotString) {
@@ -149,7 +153,7 @@ export default class Prompt {
         let isNotString = typeof disease !== 'string'
 
         while (isNotString) {
-            let disease = await this.promiseAnswerQuestion("Please tell me the disease of patient: ")
+            disease = await this.promiseAnswerQuestion("Please tell me the disease of patient: ")
 
             isNotString = typeof disease !== 'string'
             if (isNotString) {

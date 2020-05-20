@@ -4,7 +4,6 @@ export default class TestApi {
     static async testGetAllPatients() {
         try {
             let url = `${process.env.PROD_URL}/patients`
-            console.log(url)
 
             const response = await fetch(url, {
                 method: 'get'
@@ -12,7 +11,7 @@ export default class TestApi {
 
             const jsonResponse = await response.json()
 
-            console.log(`Response: ${jsonResponse}\n`)
+            console.log(`Response: ${JSON.stringify(jsonResponse)}\n`)
         } catch (error) {
             console.log(`Response: ${error}\n`)
         }
@@ -20,7 +19,6 @@ export default class TestApi {
     static async testGetPatient(id) {
         try {
             let url = `${process.env.PROD_URL}/patients/${id}`
-            console.log(url)
 
             const response = await fetch(url, {
                 method: 'get'
@@ -28,7 +26,7 @@ export default class TestApi {
 
             const jsonResponse = await response.json()
 
-            console.log(`Response: ${jsonResponse}\n`)
+            console.log(`Response: ${JSON.stringify(jsonResponse)}\n`)
         } catch (error) {
             console.log(`Response: ${error}\n`)
         }
@@ -48,7 +46,7 @@ export default class TestApi {
 
             const jsonResponse = await response.json()
 
-            console.log(`Response: ${jsonResponse}\n`)
+            console.log(`Response: ${JSON.stringify(jsonResponse)}\n`)
         } catch (error) {
             console.log(`Response: ${error}\n`)
         }
@@ -56,7 +54,6 @@ export default class TestApi {
     static async testUpdatePatient(dataToUpdate) {
         try {
             let url = `${process.env.PROD_URL}/patients/${id}`
-            console.log(url)
 
             const response = await fetch(url, {
                 headers: {
@@ -69,7 +66,7 @@ export default class TestApi {
 
             const jsonResponse = await response.json()
 
-            console.log(`Response: ${jsonResponse}\n`)
+            console.log(`Response: ${JSON.stringify(jsonResponse)}\n`)
         } catch (error) {
             console.log(`Response: ${error}\n`)
         }
@@ -87,7 +84,7 @@ export default class TestApi {
 
             const jsonResponse = await response.json()
 
-            console.log(`Response: ${jsonResponse}\n`)
+            console.log(`Response: ${JSON.stringify(jsonResponse)}\n`)
         } catch (error) {
             console.log(`Response: ${error}\n`)
         }
