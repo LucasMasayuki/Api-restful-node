@@ -51,7 +51,7 @@ export default class TestApi {
             console.log(`Response: ${error}\n`)
         }
     }
-    static async testUpdatePatient(dataToUpdate) {
+    static async testUpdatePatient(dataToUpdate, id) {
         try {
             let url = `${process.env.PROD_URL}/patients/${id}`
 
@@ -74,9 +74,6 @@ export default class TestApi {
     static async testDeletePatient(id) {
         try {
             let url = `${process.env.PROD_URL}/patients/${id}`
-            console.log(url)
-
-            console.log(url)
 
             const response = await fetch(url, {
                 method: 'delete',
