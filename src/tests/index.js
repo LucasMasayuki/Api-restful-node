@@ -1,5 +1,11 @@
-import TestApi from "./TestApi"
 import dotenv from "dotenv"
+import Prompt from "./Prompt"
+
 dotenv.config()
 
-TestApi.testGetAllPatients()
+main()
+
+function main() {
+    const prompt = new Prompt()
+    prompt.init()
+}

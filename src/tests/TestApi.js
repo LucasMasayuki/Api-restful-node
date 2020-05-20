@@ -17,9 +17,9 @@ export default class TestApi {
             console.log(error)
         }
     }
-    static async testGetPatient() {
+    static async testGetPatient(id) {
         try {
-            let url = `${process.env.PROD_URL}/patients/1`
+            let url = `${process.env.PROD_URL}/patients/${id}`
             console.log(url)
 
             const response = await fetch(url, {
@@ -33,13 +33,9 @@ export default class TestApi {
             console.log(error)
         }
     }
-    static async testCreatePatient() {
+    static async testCreatePatient(dataToCreate) {
         try {
             let url = `${process.env.PROD_URL}/patients`
-            let dataToCreate = {
-                name: "Outro paciente",
-                disease: "Gripe"
-            }
 
             console.log(url)
 
@@ -55,16 +51,9 @@ export default class TestApi {
             console.log(error)
         }
     }
-    static async testUpdatePatient() {
+    static async testUpdatePatient(dataToUpdate) {
         try {
-            let url = `${process.env.PROD_URL}/patients/1`
-            console.log(url)
-
-            let dataToUpdate = {
-                name: "Atualizando paciente",
-                disease: "Gripe"
-            }
-
+            let url = `${process.env.PROD_URL}/patients/${id}`
             console.log(url)
 
             const response = await fetch(url, {
@@ -79,9 +68,9 @@ export default class TestApi {
             console.log(error)
         }
     }
-    static async testDeletePatient() {
+    static async testDeletePatient(id) {
         try {
-            let url = `${process.env.PROD_URL}/patients/1`
+            let url = `${process.env.PROD_URL}/patients/${id}`
             console.log(url)
 
             console.log(url)
