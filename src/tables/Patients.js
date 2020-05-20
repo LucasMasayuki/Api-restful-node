@@ -32,7 +32,7 @@ const create = (request, response) => {
 
     Database.instance.pool.query(queryString, [name, disease], (error, results) => {
         if (error) {
-            response.status(500).json(error)
+            response.status(403).json(request)
         }
         response.status(200).json(`Patients added with ID: ${result.insertId}`)
     })
