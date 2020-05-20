@@ -41,7 +41,7 @@ export default class TestApi {
 
             const response = await fetch(url, {
                 method: 'post',
-                body: JSON.stringify(dataToCreate),
+                body: dataToCreate,
             })
 
             const patients = await response.json()
@@ -58,7 +58,7 @@ export default class TestApi {
 
             const response = await fetch(url, {
                 method: 'put',
-                body: JSON.stringify(dataToUpdate),
+                body: dataToUpdate,
             })
 
             const patients = await response.json()
