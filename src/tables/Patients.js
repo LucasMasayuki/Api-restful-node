@@ -34,7 +34,7 @@ const create = (request, response) => {
         if (error) {
             response.status(403).json(request)
         }
-        response.status(200).json(`Patients added with ID: ${result.insertId}`)
+        response.status(200).json(`Patients added with ID: ${results.insertId}`)
     })
 }
 
