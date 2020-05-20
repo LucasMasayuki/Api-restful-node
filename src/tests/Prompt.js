@@ -62,7 +62,7 @@ export default class Prompt {
                 name = await this.questionAboutPatientName()
                 disease = await this.questionAboutPatientDisease()
 
-                dataToCreate = {
+                let dataToCreate = {
                     name: name,
                     disease: disease,
                 }
