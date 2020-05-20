@@ -2,25 +2,32 @@ import Database from '../Database'
 
 const getAll = (request, response) => {
     const queryString = 'SELECT * FROM patients'
-    Database.instance.pool.query(queryString, (error, results) => {
-        if (error) {
-            response.status(500).json(error)
+    Database.instance.pool.query(
+        queryString,
+        (error, results) => {
+            if (error) {
+                response.status(500).json(error)
+            }
+            response.status(200).json(results.rows)
         }
-        response.status(200).json(results.rows)
-    })
+    )
 }
 
 const getById = (request, response) => {
     const id = parseInt(request.params.id)
     const queryString = 'SELECT * FROM patients WHERE id = $1'
 
-    Database.instance.pool.query(queryString, [id], (error, results) => {
-        if (error) {
-            response.status(500).json(error)
-            return
+    Database.instance.pool.query(
+        queryString,
+        [id],
+        (error, results) => {
+            if (error) {
+                response.status(500).json(error)
+                return
+            }
+            response.status(200).json(results.rows)
         }
-        response.status(200).json(results.rows)
-    })
+    )
 }
 
 const create = (request, response) => {
@@ -31,13 +38,17 @@ const create = (request, response) => {
 
     const queryString = 'INSERT INTO patients (name, disease) VALUES ($1, $2)'
 
-    Database.instance.pool.query(queryString, [name, disease], (error, results) => {
-        if (error) {
-            response.status(500).json(error)
-            return
+    Database.instance.pool.query(
+        queryString,
+        [name, disease],
+        (error, results) => {
+            if (error) {
+                response.status(500).json(error)
+                return
+            }
+            response.status(201).json(`Patients added with ID: ${results.insertId}`)
         }
-        response.status(201).json(`Patients added with ID: ${results.insertId}`)
-    })
+    )
 }
 
 const update = (request, response) => {

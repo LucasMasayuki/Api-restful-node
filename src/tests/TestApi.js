@@ -10,11 +10,11 @@ export default class TestApi {
                 method: 'get'
             })
 
-            const patients = await response.json()
+            const jsonResponse = await response.json()
 
-            console.log(patients)
+            console.log(`Response: ${jsonResponse}\n`)
         } catch (error) {
-            console.log(error)
+            console.log(`Response: ${error}\n`)
         }
     }
     static async testGetPatient(id) {
@@ -26,29 +26,31 @@ export default class TestApi {
                 method: 'get'
             })
 
-            const patients = await response.json()
+            const jsonResponse = await response.json()
 
-            console.log(patients)
+            console.log(`Response: ${jsonResponse}\n`)
         } catch (error) {
-            console.log(error)
+            console.log(`Response: ${error}\n`)
         }
     }
     static async testCreatePatient(dataToCreate) {
         try {
             let url = `${process.env.PROD_URL}/patients`
 
-            console.log(url)
-
             const response = await fetch(url, {
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json',
+                },
                 method: 'post',
                 body: JSON.stringify(dataToCreate),
             })
 
-            const patients = await response.json()
+            const jsonResponse = await response.json()
 
-            console.log(patients)
+            console.log(`Response: ${jsonResponse}\n`)
         } catch (error) {
-            console.log(error)
+            console.log(`Response: ${error}\n`)
         }
     }
     static async testUpdatePatient(dataToUpdate) {
@@ -57,15 +59,19 @@ export default class TestApi {
             console.log(url)
 
             const response = await fetch(url, {
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json',
+                },
                 method: 'put',
                 body: JSON.stringify(dataToUpdate),
             })
 
-            const patients = await response.json()
+            const jsonResponse = await response.json()
 
-            console.log(patients)
+            console.log(`Response: ${jsonResponse}\n`)
         } catch (error) {
-            console.log(error)
+            console.log(`Response: ${error}\n`)
         }
     }
     static async testDeletePatient(id) {
@@ -79,11 +85,11 @@ export default class TestApi {
                 method: 'delete',
             })
 
-            const patients = await response.json()
+            const jsonResponse = await response.json()
 
-            console.log(patients)
+            console.log(`Response: ${jsonResponse}\n`)
         } catch (error) {
-            console.log(error)
+            console.log(`Response: ${error}\n`)
         }
     }
 }
