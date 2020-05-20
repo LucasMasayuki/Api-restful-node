@@ -17,6 +17,7 @@ const getById = (request, response) => {
     Database.instance.pool.query(queryString, [id], (error, results) => {
         if (error) {
             response.status(500).json(error)
+            return
         }
         response.status(200).json(results.rows)
     })
@@ -33,6 +34,7 @@ const create = (request, response) => {
     Database.instance.pool.query(queryString, [name, disease], (error, results) => {
         if (error) {
             response.status(500).json(error)
+            return
         }
         response.status(201).json(`Patients added with ID: ${results.insertId}`)
     })
@@ -53,6 +55,7 @@ const update = (request, response) => {
         (error, results) => {
             if (error) {
                 response.status(500).json(error)
+                return
             }
             response.status(200).json(`Patients modified with ID: ${id}`)
         }
@@ -66,6 +69,7 @@ const deleteById = (request, response) => {
     Database.instance.pool.query(queryString, [id], (error, results) => {
         if (error) {
             response.status(500).json(error)
+            return
         }
         response.status(200).json(`Patients deleted with ID: ${id}`)
     })
