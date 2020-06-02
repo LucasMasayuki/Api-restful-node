@@ -1,3 +1,4 @@
 import Server from './src/Server'
+import SoapServer from './src/SoapServer'
 
-Server.initialize()
+SoapServer.initialize()
